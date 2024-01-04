@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Mvvm Architecture</string>
+    <string name="default_str">Yes</string>
 </resources>
