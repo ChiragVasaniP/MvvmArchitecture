@@ -2,12 +2,20 @@ package com.example.mvvmarchitecture.core
 
 import android.app.Activity
 import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
+import com.example.mvvmarchitecture.R
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.snackbar.Snackbar.SnackbarLayout
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 
@@ -73,6 +81,29 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel>(private va
 
     open fun showToastMessage(message: String) {
         Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+    }
+
+    fun showCustomSnackbar(view: View, message: String) {
+        val snackbar = Snackbar.make(view, "", Snackbar.LENGTH_LONG)
+        val inflater = LayoutInflater.from(view.context)
+
+
+        val snackbarLayout = inflater.inflate(R.layout.activity_main, null)
+
+        val textView = snackbarLayout?.findViewById<TextView>(R.id.txt)
+        textView?.text = message
+
+        val params = CoordinatorLayout.LayoutParams(
+            CoordinatorLayout.LayoutParams.MATCH_PARENT,
+            CoordinatorLayout.LayoutParams.WRAP_CONTENT
+        )
+        params.gravity = Gravity.BOTTOM
+
+
+        val snackBarLayout =snackbar.view as? SnackbarLayout
+        snackBarLayout?.layoutParams = params
+        snackBarLayout?.addView(snackbarLayout, 0)
+        snackbar.show()
     }
 
 }

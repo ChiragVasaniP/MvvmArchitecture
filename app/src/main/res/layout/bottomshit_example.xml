@@ -1,35 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        android:id="@+id/bottom_Sheet"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/curved_top_background"
         android:orientation="vertical"
-        android:background="@android:color/white"
-        android:elevation="8dp"
-        android:clipToPadding="false"
-        android:paddingTop="16dp">
+        android:paddingStart="24dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="42dp">
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/splash_lottie"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="false"
-            app:lottie_rawRes="@raw/lottie_welcome"
+        <ImageView
+            android:id="@+id/rectangle_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true" />
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/ic_launcher_background" />
 
 
-        <!-- Curved top shape -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="16dp"
-            android:background="@drawable/curved_top_background" />
-        <!-- Your content for the bottom sheet -->
-
-    </RelativeLayout>
-
+    </LinearLayout>
 
 
 </layout>
