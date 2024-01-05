@@ -12,10 +12,9 @@ class MyApp : Application() {
     }
 
     companion object {
-        private lateinit var instance: MyApp
+        lateinit var instance: MyApp private set
 
-        @JvmStatic
-        fun getInstance(): MyApp {
+        fun getInstanceApp(): MyApp {
             return instance
         }
     }

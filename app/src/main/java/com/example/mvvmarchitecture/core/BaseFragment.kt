@@ -9,7 +9,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 
-abstract class BaseFragment<DB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
+abstract class BaseFragment<DB : ViewDataBinding, VM : BaseViewModel>(var isShared: Boolean? = null) :
+    Fragment() {
 
     protected lateinit var mBinding: DB
     protected lateinit var mViewModel: VM
@@ -20,7 +21,7 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : BaseViewModel> : Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mViewModel = ViewModelProvider(this)[getViewModelClass()]
+        mViewModel = ViewModelProvider(if (isShared == true) requireActivity() else this)[getViewModelClass()]
     }
 
 
