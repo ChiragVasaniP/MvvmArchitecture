@@ -5,8 +5,7 @@ import com.example.mvvmarchitecture.data.MyObjectBox
 import io.objectbox.BoxStore
 
 object ObjectBox {
-    lateinit var store: BoxStore
-        private set
+    lateinit var store: BoxStore private set
 
     fun init(context: Context) {
         store = MyObjectBox.builder()

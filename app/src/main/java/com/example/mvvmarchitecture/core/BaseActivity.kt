@@ -72,7 +72,7 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel>(private va
 
     abstract fun initStart()
 
-    abstract fun intentData()
+    open fun intentData(){}
 
 
     open fun showErrorMessageToast(error: String) {
@@ -100,7 +100,7 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel>(private va
         params.gravity = Gravity.BOTTOM
 
 
-        val snackBarLayout =snackbar.view as? SnackbarLayout
+        val snackBarLayout =snackbar.view as SnackbarLayout?
         snackBarLayout?.layoutParams = params
         snackBarLayout?.addView(snackbarLayout, 0)
         snackbar.show()
